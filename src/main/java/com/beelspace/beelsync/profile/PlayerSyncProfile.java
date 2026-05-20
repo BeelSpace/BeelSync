@@ -89,6 +89,9 @@ public class PlayerSyncProfile {
     }
 
     private void syncExperience(final Player player) {
-        player.setTotalExperience(experience);
+        player.setExp(0);
+        player.setLevel(0);
+        player.setTotalExperience(0);
+        player.giveExp(experience);
     }
 }
