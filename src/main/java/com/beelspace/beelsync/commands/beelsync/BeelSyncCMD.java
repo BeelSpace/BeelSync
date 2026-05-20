@@ -10,7 +10,7 @@ import java.util.List;
 
 public class BeelSyncCMD extends AbstractCommand {
     public BeelSyncCMD(BeelSync beelAuction) {
-        super(beelAuction, "beelauction", "beelauction.admin", true, new ReloadSubCMD(beelAuction));
+        super(beelAuction, "beelsync", "beelsync.admin", true, new ReloadSubCMD(beelAuction));
     }
 
     @Override
