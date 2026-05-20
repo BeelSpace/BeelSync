@@ -1,0 +1,12 @@
+messages:
+  data-is-sync:
+    CLASSIC:
+      - '&fПожалуйста, не двигайтесь! Идёт синхронизация данных'
+  config-reload:
+    CLASSIC:
+      - '&fКонфиг был успешно перезагружен!'
+
+  errors:
+    not-enough-permission:
+      CLASSIC:
+        - '&fУ вас недостаточно прав!'
