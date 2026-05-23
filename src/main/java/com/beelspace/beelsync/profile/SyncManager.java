@@ -30,7 +30,7 @@ public class SyncManager {
 
     public void checkPlayerInSync() {
         Bukkit.getScheduler().runTaskTimerAsynchronously(beelSync, () -> {
-            playersInSync.forEach(player -> {
+            getPlayersInSync().forEach(player -> {
                 MessagesUtils.sendMessages(player, MessagesConfig.MESSAGES.dataIsSync(player.getName()));
             });
         }, 0, 20);

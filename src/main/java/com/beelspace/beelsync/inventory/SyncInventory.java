@@ -2,7 +2,6 @@ package com.beelspace.beelsync.inventory;
 
 import com.beelspace.beelsync.utils.ItemStackSerializer;
 import lombok.Getter;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -91,7 +90,6 @@ public class SyncInventory {
             }
         }
 
-        // Десериализация брони и предмета в оффхенде
         ItemStack helmet = ItemStackSerializer.deserialize(serializedData.get("helmet"));
         ItemStack chestplate = ItemStackSerializer.deserialize(serializedData.get("chestplate"));
         ItemStack leggings = ItemStackSerializer.deserialize(serializedData.get("leggings"));
