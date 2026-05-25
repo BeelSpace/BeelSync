@@ -9,6 +9,7 @@ import com.google.gson.GsonBuilder;
 import org.bukkit.inventory.PlayerInventory;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Getter
@@ -32,7 +33,7 @@ public class SyncInventory {
     }
 
     public SyncInventory(final PlayerInventory inventory) {
-        this.items = new HashMap<>();
+        this.items = new LinkedHashMap<>();
 
         for (int i = 0; i < inventory.getSize(); i++) {
             ItemStack item = inventory.getItem(i);
@@ -80,7 +81,7 @@ public class SyncInventory {
         @SuppressWarnings("unchecked")
         Map<String, String> serializedItems = gson.fromJson(serializedData.get("items"), Map.class);
 
-        Map<Integer, ItemStack> items = new HashMap<>();
+        Map<Integer, ItemStack> items = new LinkedHashMap<>();
         if (serializedItems != null) {
             for (Map.Entry<String, String> entry : serializedItems.entrySet()) {
                 ItemStack item = ItemStackSerializer.deserialize(entry.getValue());
