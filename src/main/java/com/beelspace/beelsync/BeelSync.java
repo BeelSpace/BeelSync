@@ -23,6 +23,8 @@ import java.sql.SQLException;
 
 @Getter
 public final class BeelSync extends JavaPlugin {
+    @Getter
+    private static BeelSync instance;
     private IDataBase dataBase;
     private IProfileStorage profileStorage;
     private RedisPool redisPool;
@@ -34,6 +36,7 @@ public final class BeelSync extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        instance = this;
         registerDependencies();
         registerConfigs();
         registerDataBase();

@@ -62,6 +62,7 @@ public class PlayerSyncProfile {
         player.getInventory().setLeggings(syncInventory.getLeggings());
         player.getInventory().setBoots(syncInventory.getBoots());
         player.getInventory().setItemInOffHand(syncInventory.getItemInOffHand());
+        player.getInventory().setHeldItemSlot(syncInventory.getSlotOfMainHand());
         syncInventory.getItems().forEach((slot, itemStack) -> player.getInventory().setItem(slot, itemStack));
     }
 
