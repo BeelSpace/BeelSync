@@ -55,7 +55,7 @@ public class PlayerSyncProfile {
         }
     }
 
-    private void syncInventory(final Player player) {
+    public void syncInventory(final Player player) {
         player.getInventory().clear();
         player.getInventory().setHelmet(syncInventory.getHelmet());
         player.getInventory().setChestplate(syncInventory.getChestplate());
