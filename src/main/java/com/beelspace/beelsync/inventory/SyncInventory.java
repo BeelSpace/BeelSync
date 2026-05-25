@@ -2,7 +2,7 @@ package com.beelspace.beelsync.inventory;
 
 import com.beelspace.beelsync.utils.ItemStackSerializer;
 import lombok.Getter;
-import org.bukkit.entity.Player;
+import lombok.Setter;
 import org.bukkit.inventory.ItemStack;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -15,11 +15,16 @@ import java.util.Map;
 @Getter
 public class SyncInventory {
     private final Map<Integer, ItemStack> items;
-    private final ItemStack helmet;
-    private final ItemStack chestplate;
-    private final ItemStack leggings;
-    private final ItemStack boots;
-    private final ItemStack itemInOffHand;
+    @Setter
+    private ItemStack helmet;
+    @Setter
+    private ItemStack chestplate;
+    @Setter
+    private ItemStack leggings;
+    @Setter
+    private ItemStack boots;
+    @Setter
+    private ItemStack itemInOffHand;
     private final int slotOfMainHand;
 
     public SyncInventory(final Map<Integer, ItemStack> items, ItemStack helmet, ItemStack chestplate, ItemStack leggings, ItemStack boots, ItemStack itemInOffHand, int slotOfMainHand) {
@@ -30,6 +35,10 @@ public class SyncInventory {
         this.boots = boots;
         this.itemInOffHand = itemInOffHand;
         this.slotOfMainHand = slotOfMainHand;
+    }
+
+    public void setItem(int slot, ItemStack item) {
+        items.put(slot, item);
     }
 
     public SyncInventory(final PlayerInventory inventory) {
