@@ -57,13 +57,14 @@ public class PlayerSyncProfile {
 
     public void syncInventory(final Player player) {
         player.getInventory().clear();
+        syncInventory.getItems().forEach((slot, itemStack) -> player.getInventory().setItem(slot, itemStack));
         player.getInventory().setHelmet(syncInventory.getHelmet());
         player.getInventory().setChestplate(syncInventory.getChestplate());
         player.getInventory().setLeggings(syncInventory.getLeggings());
         player.getInventory().setBoots(syncInventory.getBoots());
         player.getInventory().setItemInOffHand(syncInventory.getItemInOffHand());
         player.getInventory().setHeldItemSlot(syncInventory.getSlotOfMainHand());
-        syncInventory.getItems().forEach((slot, itemStack) -> player.getInventory().setItem(slot, itemStack));
+        player.updateInventory();
     }
 
     private void syncPotionEffects(final Player player) {

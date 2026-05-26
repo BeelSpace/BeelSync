@@ -3,6 +3,7 @@ package com.beelspace.beelsync.inventory;
 import com.beelspace.beelsync.utils.ItemStackSerializer;
 import lombok.Getter;
 import lombok.Setter;
+import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -25,7 +26,8 @@ public class SyncInventory {
     private ItemStack boots;
     @Setter
     private ItemStack itemInOffHand;
-    private final int slotOfMainHand;
+    @Setter
+    private int slotOfMainHand;
 
     public SyncInventory(final Map<Integer, ItemStack> items, ItemStack helmet, ItemStack chestplate, ItemStack leggings, ItemStack boots, ItemStack itemInOffHand, int slotOfMainHand) {
         this.items = items;
@@ -45,9 +47,17 @@ public class SyncInventory {
         this.items = new LinkedHashMap<>();
 
         for (int i = 0; i < inventory.getSize(); i++) {
+            if (i == 39 || i == 38 || i == 37 || i == 36) {
+                continue;
+            }
+
+            if (i == 40) {
+                continue;
+            }
+
             ItemStack item = inventory.getItem(i);
-            if (item != null && !item.getType().isAir()) {
-                this.items.put(i, item.clone());
+            if (item != null && !item.getType().isAir() ) {
+                items.put(i, item.clone());
             }
         }
 
@@ -95,6 +105,17 @@ public class SyncInventory {
             for (Map.Entry<String, String> entry : serializedItems.entrySet()) {
                 ItemStack item = ItemStackSerializer.deserialize(entry.getValue());
                 if (item != null) {
+                    if (Integer.parseInt(entry.getKey()) == 39
+                            || Integer.parseInt(entry.getKey()) == 38 ||
+                            Integer.parseInt(entry.getKey()) == 37
+                            || Integer.parseInt(entry.getKey()) == 36)
+                    {
+                        continue;
+                    }
+
+                    if (Integer.parseInt(entry.getKey()) == 40) {
+                        continue;
+                    }
                     items.put(Integer.parseInt(entry.getKey()), item);
                 }
             }
