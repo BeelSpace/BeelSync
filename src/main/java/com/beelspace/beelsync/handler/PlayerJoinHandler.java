@@ -23,7 +23,7 @@ public class PlayerJoinHandler implements Listener {
             } else {
                 playerSyncProfile = beelSync.getProfileStorage().getProfile(e.getPlayer().getName());
                 if (playerSyncProfile != null) Bukkit.getScheduler().runTask(beelSync, playerSyncProfile::syncProfile);
-                beelSync.getProfileStorage().createProfile(e.getPlayer());
+                else beelSync.getProfileStorage().createProfile(e.getPlayer());
             }
 
             beelSync.getSyncManager().removePlayer(e.getPlayer());
