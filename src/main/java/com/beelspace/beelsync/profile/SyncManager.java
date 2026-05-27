@@ -37,6 +37,7 @@ public class SyncManager {
     }
 
     public void startUpdateInRedis() {
+        /*
         Bukkit.getScheduler().runTaskTimerAsynchronously(beelSync, () -> {
             Bukkit.getOnlinePlayers().forEach(player -> {
                 final PlayerSyncProfile playerSyncProfile = new PlayerSyncProfile(
@@ -53,6 +54,6 @@ public class SyncManager {
                 );
                 beelSync.getRedisPool().setPlayerSyncProfile(playerSyncProfile);
             });
-        }, 0, MainConfig.CASH.update);
+        }, 0, MainConfig.CASH.update); */
     }
 }

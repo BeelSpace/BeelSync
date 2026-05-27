@@ -7,8 +7,8 @@ import java.util.Base64;
 
 public class ItemStackSerializer {
     public static String serialize(ItemStack item) {
-        if (item == null || item.getType() == Material.AIR) {
-            return null;
+        if (item == null || item.getType() == Material.AIR || item.getAmount() == 0) {
+            return "EMPTY_ITEM";
         }
 
         try {
@@ -25,9 +25,19 @@ public class ItemStackSerializer {
             return null;
         }
 
+        if (base64.equals("EMPTY_ITEM")) {
+            return new ItemStack(Material.AIR, 0);
+        }
+
         try {
             byte[] bytes = Base64.getDecoder().decode(base64);
-            return ItemStack.deserializeBytes(bytes);
+            ItemStack item = ItemStack.deserializeBytes(bytes);
+
+            if (item == null || item.getType() == Material.AIR || item.getAmount() == 0) {
+                return new ItemStack(Material.AIR, 0);
+            }
+
+            return item;
         } catch (Exception e) {
             e.printStackTrace();
             return null;

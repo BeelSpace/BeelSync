@@ -4,6 +4,7 @@ import com.beelspace.beelsync.utils.ItemStackSerializer;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -55,17 +56,16 @@ public class SyncInventory {
                 continue;
             }
 
-            ItemStack item = inventory.getItem(i);
-            if (item != null && !item.getType().isAir() ) {
-                items.put(i, item.clone());
-            }
+            final ItemStack item = inventory.getItem(i);
+            if (item != null) items.put(i, item.clone());
+            else items.put(i, new ItemStack(Material.AIR));
         }
 
-        this.helmet = cloneIfNotNull(inventory.getHelmet());
-        this.chestplate = cloneIfNotNull(inventory.getChestplate());
-        this.leggings = cloneIfNotNull(inventory.getLeggings());
-        this.boots = cloneIfNotNull(inventory.getBoots());
-        this.itemInOffHand = cloneIfNotNull(inventory.getItemInOffHand());
+        this.helmet = inventory.getHelmet();
+        this.chestplate = inventory.getChestplate();
+        this.leggings = inventory.getLeggings();
+        this.boots = inventory.getBoots();
+        this.itemInOffHand = inventory.getItemInOffHand();
         this.slotOfMainHand = inventory.getHeldItemSlot();
     }
 
@@ -128,9 +128,5 @@ public class SyncInventory {
         ItemStack itemInOffHand = ItemStackSerializer.deserialize(serializedData.get("itemInOffHand"));
         int slotOfMainHand = Integer.parseInt(serializedData.get("slotOfMainHand"));
         return new SyncInventory(items, helmet, chestplate, leggings, boots, itemInOffHand, slotOfMainHand);
-    }
-
-    private ItemStack cloneIfNotNull(ItemStack item) {
-        return (item != null && !item.getType().isAir()) ? item.clone() : null;
     }
 }
