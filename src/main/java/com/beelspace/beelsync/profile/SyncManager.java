@@ -18,7 +18,6 @@ public class SyncManager {
     public SyncManager(BeelSync beelSync) {
         this.beelSync = beelSync;
     }
-    @Getter
     private final List<Player> playersInSync = new ArrayList<>();
 
     public void addPlayer(Player player) {
@@ -34,6 +33,10 @@ public class SyncManager {
                 MessagesUtils.sendMessages(player, MessagesConfig.MESSAGES.dataIsSync(player.getName()));
             });
         }, 0, 20);
+    }
+
+    public List<Player> getPlayersInSync() {
+        return new ArrayList<>(playersInSync);
     }
 
     public void startUpdateInRedis() {
