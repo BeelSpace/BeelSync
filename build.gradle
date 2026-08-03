@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.beelspace'
-version = '1.1.1'
+version = '1.2'
 
 repositories {
     mavenCentral()
@@ -17,7 +17,8 @@ repositories {
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.8-R0.1-SNAPSHOT")
-    compileOnly(files('C:\\Users\\notas\\OneDrive\\Desktop\\Разработка плагинов\\плагины сервера\\BeelEconomy\\DreamThemes-1.1.jar'))
+    compileOnly(files('C:\\Users\\user\\Desktop\\Сборка\\BeelSpace 2.0\\plugins\\BeelAntiRelog-1.0.jar'))
+    compileOnly(files('C:\\Users\\user\\Desktop\\Сборка\\BeelSpace 2.0\\plugins\\DreamThemes-1.1.jar'))
     shadow group: 'com.zaxxer', name: 'HikariCP', version: '7.0.2'
     shadow("org.apache.commons:commons-pool2:2.13.1")
     shadow("redis.clients:jedis:2.8.0")
